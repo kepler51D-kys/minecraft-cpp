@@ -1,5 +1,4 @@
-#include "renderer.h"
-#include "drawScreen.h"
+#include "renderer.hpp"
 #include <SDL3/SDL_error.h>
 #include <SDL3/SDL_gpu.h>
 #include <SDL3/SDL_init.h>
@@ -14,7 +13,7 @@ Uint8 maxFPS = 60;
 Uint32 time = 0;
 
 
-int allInit(SDL_Window** window, SDL_Renderer** renderer, TTF_Font** font, SDL_GPUDevice** device, char* fontFile, vec2 windowSize) {
+int allInit(SDL_Window** window, SDL_Renderer** renderer, TTF_Font** font, const char* fontFile, vec2 windowSize) {
     if (!SDL_CreateWindowAndRenderer("client", windowSize.x, windowSize.y, SDL_WINDOW_RESIZABLE, window, renderer)) {
         SDL_Log("Couldn't create window and renderer: %s\n", SDL_GetError());
         return 1;
@@ -23,7 +22,7 @@ int allInit(SDL_Window** window, SDL_Renderer** renderer, TTF_Font** font, SDL_G
     if (!TTF_Init()) {
         printf("ttf init failed\n");
         SDL_Quit();
-        SDL_DestroyGPUDevice(*device);
+        // SDL_DestroyGPUDevice(*device);
         return 1;
     }
     

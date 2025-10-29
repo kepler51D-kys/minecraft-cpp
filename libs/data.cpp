@@ -1,4 +1,4 @@
-#include "data.h"
+#include "data.hpp"
 
 
 const SDL_Color black = {0,0,0,255};

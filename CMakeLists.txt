@@ -40,7 +40,6 @@ endif()
 set(SOURCES
     src/main.cpp
     libs/renderer.cpp
-    libs/sockets.cpp
     libs/data.cpp
     libs/stringType.cpp
 )
