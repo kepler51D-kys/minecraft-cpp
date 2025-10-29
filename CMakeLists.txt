@@ -10,7 +10,11 @@ find_package(glfw3 REQUIRED)
 find_package(GLEW REQUIRED)
 
 # Create executable
-add_executable(${PROJECT_NAME} src/main.cpp)
+add_executable(
+    ${PROJECT_NAME}
+    src/main.cpp
+    libs/shaders.cpp
+)
 
 # Link libraries
 target_link_libraries(${PROJECT_NAME} 
@@ -20,7 +24,7 @@ target_link_libraries(${PROJECT_NAME}
 )
 
 # Include directories
-target_include_directories(${PROJECT_NAME} PRIVATE ${OPENGL_INCLUDE_DIR})
+target_include_directories(${PROJECT_NAME} PRIVATE ${OPENGL_INCLUDE_DIR} include)
 
 # Compiler options
 target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
