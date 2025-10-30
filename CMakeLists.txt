@@ -14,6 +14,8 @@ add_executable(
     ${PROJECT_NAME}
     src/main.cpp
     libs/shaders.cpp
+    libs/voxels.cpp
+    libs/voxelInfo.cpp
 )
 
 # Link libraries

@@ -2,6 +2,8 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <cmath>
+#include "voxels.hpp"
+#include "voxelInfo.hpp"
 #include "shaders.hpp"
 
 int main() {
@@ -56,12 +58,15 @@ int main() {
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 
+    cube newcube = cube(0);
     while (!glfwWindowShouldClose(window)) {
+        
         processInput(window);
 
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
-
+        newcube.setupBuffers();
+        newcube.render();
         glUseProgram(shaderProgram);
 
         float time = glfwGetTime();
@@ -69,7 +74,7 @@ int main() {
         glUniform1f(timeLocation, time);
 
         glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        // glDrawArrays(GL_TRIANGLES, 0, 3);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
